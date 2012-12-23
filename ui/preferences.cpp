@@ -11,7 +11,8 @@ Preferences::Preferences(QWidget * parent) : QDialog(parent), isDirty(false), ui
 
   populateUi();
 
-  connect(ui->cmbAudioFormat, SIGNAL(currentIndexChanged()), this, SIGNAL(dirty()));
+  connect(ui->cmbAudioFormat, SIGNAL(currentIndexChanged(int)), this, SIGNAL(dirty()));
+  connect(ui->cmbVideoFormat, SIGNAL(currentIndexChanged(int)), this, SIGNAL(dirty()));
   connect(this, SIGNAL(dirty()), this, SLOT(setDirty()));
 }
 
@@ -35,16 +36,19 @@ bool Preferences::confirmClose() {
 void Preferences::savePreferences() {
   settings.setDownloadLocation(ui->txtDownload->text());
   settings.setAudioFormat(ui->cmbAudioFormat->currentText());
+  settings.setVideoFormat(ui->cmbVideoFormat->currentText());
 }
 
 void Preferences::populateUi() {
   ui->txtDownload->setText(settings.getDownloadLocation());
   ui->cmbAudioFormat->addItems(settings.supportedAudioFormats());
+  ui->cmbVideoFormat->addItems(settings.supportedVideoFormats());
 
   int audioIndex = ui->cmbAudioFormat->findText(settings.getAudioFormat());
-  if ( -1 != audioIndex ) {
-    ui->cmbAudioFormat->setCurrentIndex(audioIndex);
-  }
+  ui->cmbAudioFormat->setCurrentIndex(-1 == audioIndex ? 1 : audioIndex);
+
+  int videoIndex = ui->cmbVideoFormat->findText(settings.getVideoFormat());
+  ui->cmbVideoFormat->setCurrentIndex(-1 == videoIndex ? 1 : videoIndex);
 }
 
 void Preferences::browseDownloadDirectory() {

@@ -22,7 +22,11 @@ public:
   void setAudioFormat(QString format);
   QString getAudioFormat();
 
+  void setVideoFormat(QString format);
+  QString getVideoFormat();
+
   QStringList supportedAudioFormats();
+  QStringList supportedVideoFormats();
 
 protected:
   QSettings settings;

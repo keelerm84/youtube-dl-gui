@@ -41,6 +41,18 @@ QString Settings::getAudioFormat() {
   return settings.value("prefs/audio-format", "best").toString();
 }
 
+void Settings::setVideoFormat(QString format) {
+  settings.setValue("prefs/video-format", format);
+}
+
+QString Settings::getVideoFormat() {
+  return settings.value("prefs/video-format", "video").toString();
+}
+
 QStringList Settings::supportedAudioFormats() {
   return QStringList() <<  "aac" << "best" << "m4a" << "mp3" << "vorbis" << "wav";
+}
+
+QStringList Settings::supportedVideoFormats() {
+  return QStringList() << "3gp" << "mp4" << "video" << "webm";
 }
