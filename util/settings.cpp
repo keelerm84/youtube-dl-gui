@@ -25,20 +25,20 @@ QString Settings::getApplicationVersion() {
 
 
 void Settings::setDownloadLocation(QString path) {
-  settings.setValue("directories/audio", path);
+  settings.setValue("prefs/download-location", path);
 }
 
 QString Settings::getDownloadLocation() {
   QDesktopServices services;
-  return settings.value("directories/audio", services.storageLocation(QDesktopServices::MusicLocation)).toString();
+  return settings.value("prefs/download-location", services.storageLocation(QDesktopServices::MusicLocation)).toString();
 }
 
 void Settings::setAudioFormat(QString format) {
-  settings.setValue("audio/format", format);
+  settings.setValue("prefs/audio-format", format);
 }
 
 QString Settings::getAudioFormat() {
-  return settings.value("audio/format", "best").toString();
+  return settings.value("prefs/audio-format", "best").toString();
 }
 
 QStringList Settings::supportedAudioFormats() {

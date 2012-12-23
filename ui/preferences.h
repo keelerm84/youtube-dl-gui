@@ -22,7 +22,7 @@ signals:
 protected slots:
   void reject();
   void savePreferences();
-  void browseAudioDirectory();
+  void browseDownloadDirectory();
   void setDirty();
 
 protected:

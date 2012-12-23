@@ -7,7 +7,7 @@
 Preferences::Preferences(QWidget * parent) : QDialog(parent), isDirty(false), ui(new Ui::Preferences) {
   ui->setupUi(this);
   connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(savePreferences()));
-  connect(ui->btnBrowse, SIGNAL(clicked()), this, SLOT(browseAudioDirectory()));
+  connect(ui->btnBrowse, SIGNAL(clicked()), this, SLOT(browseDownloadDirectory()));
 
   populateUi();
 
@@ -25,8 +25,8 @@ void Preferences::reject() {
 }
 
 bool Preferences::confirmClose() {
-  int answer = QMessageBox::question(this, tr("Unsaved Changes"), 
-                                     tr("You have made changes which have not been saved.  Are you sure you want to discard these changes?"), 
+  int answer = QMessageBox::question(this, tr("Unsaved Changes"),
+                                     tr("You have made changes which have not been saved.  Are you sure you want to discard these changes?"),
                                      QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
 
   return ( QMessageBox::Yes == answer );
@@ -47,7 +47,7 @@ void Preferences::populateUi() {
   }
 }
 
-void Preferences::browseAudioDirectory() {
+void Preferences::browseDownloadDirectory() {
   QString path = QFileDialog::getExistingDirectory(this, tr("Please choose a directory to store downloaded files."), settings.getDownloadLocation());
 
   if ( false == path.isNull() ) {
