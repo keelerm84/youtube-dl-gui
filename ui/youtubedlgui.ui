@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>718</width>
-    <height>429</height>
+    <height>411</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="3" column="5">
+    <item row="3" column="3">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QPushButton" name="btnUp">
@@ -64,7 +64,17 @@
       </item>
      </layout>
     </item>
-    <item row="3" column="0" colspan="5">
+    <item row="0" column="0" colspan="2">
+     <widget class="QLineEdit" name="txtUrl">
+      <property name="placeholderText">
+       <string>YouTube Video URL</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QComboBox" name="cmbDownloadOptions"/>
+    </item>
+    <item row="3" column="0" colspan="3">
      <widget class="QTableWidget" name="tblQueue">
       <property name="alternatingRowColors">
        <bool>true</bool>
@@ -74,38 +84,166 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="2" colspan="2">
-     <widget class="QComboBox" name="cmbFormat"/>
+    <item row="1" column="0" colspan="4">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="btnCollapse">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../res/resources.qrc">
+          <normaloff>:/images/expand-10x6.png</normaloff>:/images/expand-10x6.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>10</width>
+          <height>6</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblAdvanced">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Show Advanced</string>
+        </property>
+        <property name="buddy">
+         <cstring>btnCollapse</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
-    <item row="0" column="5">
+    <item row="0" column="3">
      <widget class="QPushButton" name="btnAdd">
       <property name="text">
        <string>&amp;Add</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="txtUrl">
-      <property name="placeholderText">
-       <string>YouTube Video URL</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <spacer name="verticalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Maximum</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
+    <item row="2" column="0" colspan="4">
+     <widget class="QFrame" name="frameAdvanced">
+      <property name="minimumSize">
        <size>
-        <width>20</width>
-        <height>15</height>
+        <width>0</width>
+        <height>0</height>
        </size>
       </property>
-     </spacer>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <property name="topMargin">
+        <number>9</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>6</number>
+       </property>
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="lblVideoFormat">
+           <property name="text">
+            <string>Video Format</string>
+           </property>
+           <property name="buddy">
+            <cstring>cmbVideoFormat</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbVideoFormat"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblAudioFormat">
+           <property name="text">
+            <string>Audio Format</string>
+           </property>
+           <property name="buddy">
+            <cstring>cmbAudioFormat</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbAudioFormat"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -169,6 +307,19 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>txtUrl</tabstop>
+  <tabstop>cmbDownloadOptions</tabstop>
+  <tabstop>btnAdd</tabstop>
+  <tabstop>btnCollapse</tabstop>
+  <tabstop>cmbVideoFormat</tabstop>
+  <tabstop>cmbAudioFormat</tabstop>
+  <tabstop>btnUp</tabstop>
+  <tabstop>btnDown</tabstop>
+  <tabstop>btnRemove</tabstop>
+  <tabstop>btnDownload</tabstop>
+  <tabstop>tblQueue</tabstop>
+ </tabstops>
  <resources>
   <include location="../res/resources.qrc"/>
  </resources>

@@ -15,9 +15,14 @@ public:
   YouTubeDlGui(QWidget * parent = 0);
   ~YouTubeDlGui();
 
+protected:
+  void populateUi();
+
 protected slots:
   void showAbout();
   void showPreferences();
+  void toggleAdvancedVisiblity();
+  void enableAdvancedProperties();
 
 private:
   Ui::YouTubeDlGui * ui;

@@ -68,4 +68,4 @@ ADD_EXECUTABLE( youtube-dl-gui ${DESKTOP_APP_SRCS} ${DESKTOP_APP_MOC_SRCS} ${DES
 
 # last thing we have to do is to tell CMake what libraries our executable needs,
 # luckily FIND_PACKAGE prepared QT_LIBRARIES variable for us:
-TARGET_LINK_LIBRARIES( youtube-dl-gui ${QT_LIBRARIES} ${QJSON_LIBRARIES} ${QXT_LIBRARIES} )
+TARGET_LINK_LIBRARIES( youtube-dl-gui ${QT_LIBRARIES} ${QJSON_LIBRARIES} )

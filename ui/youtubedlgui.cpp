@@ -2,12 +2,20 @@
 #include "ui_youtubedlgui.h"
 #include "youtubedlgui.h"
 #include "preferences.h"
+#include "../util/settings.h"
 
 YouTubeDlGui::YouTubeDlGui(QWidget * parent) : QMainWindow(parent), ui(new Ui::YouTubeDlGui) {
   ui->setupUi(this);
   connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
   connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
   connect(ui->actionPreferences, SIGNAL(triggered()), this, SLOT(showPreferences()));
+  connect(ui->btnCollapse, SIGNAL(clicked(bool)), this, SLOT(toggleAdvancedVisiblity()));
+  connect(ui->cmbDownloadOptions, SIGNAL(currentIndexChanged(QString)), this, SLOT(enableAdvancedProperties()));
+
+  populateUi();
+
+  ui->frameAdvanced->setVisible(false);
+  enableAdvancedProperties();
 }
 
 YouTubeDlGui::~YouTubeDlGui() {
@@ -21,4 +29,42 @@ void YouTubeDlGui::showAbout() {
 void YouTubeDlGui::showPreferences() {
   Preferences preferences(this);
   preferences.exec();
+}
+
+void YouTubeDlGui::populateUi() {
+  Settings settings;
+
+  ui->cmbDownloadOptions->addItems(QStringList() << "Video Only" << "Audio Only" << "Video & Audio");
+
+  ui->cmbAudioFormat->addItems(settings.supportedAudioFormats());
+  ui->cmbVideoFormat->addItems(settings.supportedVideoFormats());
+
+  int audioIndex = ui->cmbAudioFormat->findText(settings.getAudioFormat());
+  ui->cmbAudioFormat->setCurrentIndex(-1 == audioIndex ? 1 : audioIndex);
+
+  int videoIndex = ui->cmbVideoFormat->findText(settings.getVideoFormat());
+  ui->cmbVideoFormat->setCurrentIndex(-1 == videoIndex ? 1 : videoIndex);
+}
+
+void YouTubeDlGui::toggleAdvancedVisiblity() {
+  ui->frameAdvanced->setVisible(! ui->frameAdvanced->isVisible());
+
+  QIcon collapseIcon = ui->frameAdvanced->isVisible() ? QIcon(":/images/collapse-10x6.png") : QIcon(":/images/expand-10x6.png");
+  ui->btnCollapse->setIcon(collapseIcon);
+  ui->lblAdvanced->setText(ui->frameAdvanced->isVisible() ? tr("Hide Advanced") : tr("Show Advanced"));
+}
+
+void YouTubeDlGui::enableAdvancedProperties() {
+  QString downloadOption = ui->cmbDownloadOptions->currentText();
+
+  ui->cmbVideoFormat->setEnabled(false);
+  ui->cmbAudioFormat->setEnabled(false);
+
+  if ( -1 != downloadOption.indexOf("Video")) {
+    ui->cmbVideoFormat->setEnabled(true);
+  }
+
+  if ( -1 != downloadOption.indexOf("Audio")) {
+    ui->cmbAudioFormat->setEnabled(true);
+  }
 }
