@@ -10,6 +10,8 @@ LIST(APPEND CMAKE_MODULE_PATH /usr/local/share/apps/cmake/modules)
 # note that we don't need \ at the end of line
  SET( DESKTOP_APP_SRCS
  ./main.cpp
+ ./ui/downloadqueue.cpp
+ ./ui/downloaditem.cpp
  ./ui/preferences.cpp
  ./ui/youtubedlgui.cpp
  ./util/settings.cpp
@@ -17,9 +19,9 @@ LIST(APPEND CMAKE_MODULE_PATH /usr/local/share/apps/cmake/modules)
 
 # another list, this time it includes all header files that should be treated with moc
 SET( DESKTOP_APP_MOC_HDRS
+  ./ui/downloadqueue.h
   ./ui/preferences.h
   ./ui/youtubedlgui.h
-  ./util/settings.h
 )
 
 # some .ui files

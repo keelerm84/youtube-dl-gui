@@ -75,13 +75,21 @@
      <widget class="QComboBox" name="cmbDownloadOptions"/>
     </item>
     <item row="3" column="0" colspan="3">
-     <widget class="QTableWidget" name="tblQueue">
+     <widget class="DownloadQueue" name="tblDownloadQueue">
       <property name="alternatingRowColors">
        <bool>true</bool>
       </property>
       <property name="selectionMode">
        <enum>QAbstractItemView::SingleSelection</enum>
       </property>
+      <property name="columnCount">
+       <number>5</number>
+      </property>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
      </widget>
     </item>
     <item row="1" column="0" colspan="4">
@@ -307,6 +315,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DownloadQueue</class>
+   <extends>QTableWidget</extends>
+   <header>ui/downloadqueue.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>txtUrl</tabstop>
   <tabstop>cmbDownloadOptions</tabstop>
@@ -318,7 +333,7 @@
   <tabstop>btnDown</tabstop>
   <tabstop>btnRemove</tabstop>
   <tabstop>btnDownload</tabstop>
-  <tabstop>tblQueue</tabstop>
+  <tabstop>tblDownloadQueue</tabstop>
  </tabstops>
  <resources>
   <include location="../res/resources.qrc"/>

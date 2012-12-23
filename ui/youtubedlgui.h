@@ -23,6 +23,7 @@ protected slots:
   void showPreferences();
   void toggleAdvancedVisiblity();
   void enableAdvancedProperties();
+  void addDownload();
 
 private:
   Ui::YouTubeDlGui * ui;
