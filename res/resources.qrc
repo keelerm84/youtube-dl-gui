@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="images">
+    <file>youtube-16.png</file>
+    <file>about-16.png</file>
+    <file>preferences-16.png</file>
+    <file>quit-16.png</file>
+  </qresource>
+</RCC>
