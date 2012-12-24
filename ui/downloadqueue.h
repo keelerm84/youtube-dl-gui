@@ -14,9 +14,11 @@ public:
   ~DownloadQueue();
 
   void addTopLevelItem(DownloadItem * item);
+  DownloadItem * getItemToDownload();
 
 protected slots:
   void setItemTitle(DownloadProperties properties);
+  void downloadComplete(DownloadProperties properties);
 };
 
 #endif /* _DOWNLOAD_QUEUE_ */

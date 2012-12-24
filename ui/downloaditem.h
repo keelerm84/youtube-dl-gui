@@ -14,9 +14,13 @@ public:
   void setProperties(DownloadProperties _properties);
   DownloadProperties getProperties();
 
+  void setInProgress(bool isInProgress);
+  bool isInProgress();
+
 protected:
   DownloadProperties properties;
   void updateDisplay();
+  bool inProgress;
 };
 
 #endif /* _DOWNLOAD_ITEM_ */

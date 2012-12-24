@@ -24,6 +24,7 @@ protected slots:
   void toggleAdvancedVisiblity();
   void enableAdvancedProperties();
   void addDownload();
+  void downloadFile();
 
 private:
   Ui::YouTubeDlGui * ui;

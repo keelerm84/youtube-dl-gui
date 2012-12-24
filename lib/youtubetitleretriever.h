@@ -14,9 +14,6 @@ public:
 
   void getTitle();
 
-signals:
-  void title(QString title);
-
 protected slots:
   void processFinished(int exitCode, QProcess::ExitStatus exitStatus);
 };

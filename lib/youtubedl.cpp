@@ -28,7 +28,7 @@ QString YouTubeDl::generateErrorMessage() {
     error = QObject::tr("The process has encountered a read error.");
     break;
   case QProcess::UnknownError:
-    error = QObject::tr("The process has encountered an unkonwn error.");
+    error = QObject::tr("The process has encountered an unknown error.");
     break;
   }
 

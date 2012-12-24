@@ -13,7 +13,7 @@ void YouTubeTitleRetriever::getTitle() {
 }
 
 void YouTubeTitleRetriever::processFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-  if ( exitStatus == QProcess::CrashExit ) {
+  if ( 0 != exitCode ) {
     emit error(generateErrorMessage(), properties);
   } else {
     QString title = process->readAllStandardOutput();

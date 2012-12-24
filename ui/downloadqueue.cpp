@@ -31,3 +31,27 @@ void DownloadQueue::setItemTitle(DownloadProperties properties) {
     downloadItem->setProperties(properties);
   }
 }
+
+DownloadItem * DownloadQueue::getItemToDownload() {
+  DownloadItem * download = 0;
+
+  for(int i = 0; i < topLevelItemCount(); ++i) {
+    QTreeWidgetItem * item = topLevelItem(i);
+    DownloadItem * downloadItem = dynamic_cast<DownloadItem *>(item);
+
+    if ( ! downloadItem->isInProgress() ) {
+      return downloadItem;
+    }
+  }
+
+  return download;
+}
+
+
+void DownloadQueue::downloadComplete(DownloadProperties properties) {
+  foreach(QTreeWidgetItem * item, findItems(properties.getTitle(), Qt::MatchExactly, 1)) {
+    DownloadItem * downloadItem = dynamic_cast<DownloadItem *>(item);
+    delete downloadItem;
+  }
+}
+
