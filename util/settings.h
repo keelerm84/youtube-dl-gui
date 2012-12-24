@@ -28,6 +28,8 @@ public:
   QStringList supportedAudioFormats();
   QStringList supportedVideoFormats();
 
+  QString getProgram();
+
 protected:
   QSettings settings;
 };

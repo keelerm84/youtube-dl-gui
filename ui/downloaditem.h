@@ -3,20 +3,7 @@
 
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
-
-struct DownloadProperties {
-  DownloadProperties() :
-    downloadAudio(false), downloadVideo(true), videoFormat("video"), audioFormat("best"), url(""), title("") {}
-
-  bool downloadAudio;
-  bool downloadVideo;
-
-  QString videoFormat;
-  QString audioFormat;
-
-  QString url;
-  QString title;
-};
+#include "../lib/downloadproperties.h"
 
 class DownloadItem : public QTreeWidgetItem
 {

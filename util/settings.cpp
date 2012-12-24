@@ -56,3 +56,7 @@ QStringList Settings::supportedAudioFormats() {
 QStringList Settings::supportedVideoFormats() {
   return QStringList() << "3gp" << "mp4" << "video" << "webm";
 }
+
+QString Settings::getProgram() {
+  return "youtube-dl";
+}

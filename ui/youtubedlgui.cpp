@@ -1,10 +1,11 @@
 #include <QMessageBox>
 #include <QUrl>
-#include "ui_youtubedlgui.h"
-#include "youtubedlgui.h"
-#include "preferences.h"
+#include "../lib/downloadproperties.h"
 #include "../util/settings.h"
 #include "downloaditem.h"
+#include "preferences.h"
+#include "ui_youtubedlgui.h"
+#include "youtubedlgui.h"
 
 YouTubeDlGui::YouTubeDlGui(QWidget * parent) : QMainWindow(parent), ui(new Ui::YouTubeDlGui) {
   ui->setupUi(this);
@@ -81,14 +82,13 @@ void YouTubeDlGui::addDownload() {
     return;
   }
 
-  DownloadProperties properties;
-  properties.downloadAudio = ui->cmbAudioFormat->isEnabled();
-  properties.downloadVideo = ui->cmbVideoFormat->isEnabled();
+  DownloadProperties properties(ui->txtUrl->text());
+  properties.enableVideoDownload(ui->cmbVideoFormat->isEnabled());
+  properties.enableAudioDownload(ui->cmbAudioFormat->isEnabled());
 
-  properties.videoFormat = ui->cmbVideoFormat->currentText();
-  properties.audioFormat = ui->cmbAudioFormat->currentText();
-
-  properties.url = ui->txtUrl->text();
+  properties.setVideoFormat(ui->cmbVideoFormat->currentText());
+  properties.setAudioFormat(ui->cmbAudioFormat->currentText());
 
   ui->tblDownloadQueue->addTopLevelItem(new DownloadItem(properties));
+  ui->txtUrl->setText("");
 }

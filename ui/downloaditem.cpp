@@ -18,19 +18,18 @@ DownloadProperties DownloadItem::getProperties() {
 }
 
 void DownloadItem::updateDisplay() {
-  QString title = 0 == properties.title ? properties.url : properties.title;
   QString format;
 
-  if ( properties.downloadVideo && ! properties.downloadAudio ) {
+  if ( properties.isVideoDownloadEnabled() && ! properties.isAudioDownloadEnabled() ) {
     format = "Video & Audio";
-  } else if ( ! properties.downloadVideo && properties.downloadAudio ) {
+  } else if ( ! properties.isVideoDownloadEnabled() && properties.isAudioDownloadEnabled() ) {
     format = "Audio Only";
   } else {
     format = "Video Only";
   }
 
-  setText(1, title);
+  setText(1, properties.getTitle());
   setText(2, format);
-  setText(3, properties.downloadVideo ? properties.videoFormat : "n/a");
-  setText(4, properties.downloadAudio ? properties.audioFormat : "n/a");
+  setText(3, properties.isVideoDownloadEnabled() ? properties.getVideoFormat() : "n/a");
+  setText(4, properties.isAudioDownloadEnabled() ? properties.getAudioFormat() : "n/a");
 }
