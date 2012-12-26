@@ -14,13 +14,19 @@ public:
   void setProperties(DownloadProperties _properties);
   DownloadProperties getProperties();
 
-  void setInProgress(bool isInProgress);
-  bool isInProgress();
+  void setDownloadInProgress();
+  void setDownloadComplete();
+  void setError(QString _error);
+
+  bool isAvailableForDownload();
 
 protected:
   DownloadProperties properties;
   void updateDisplay();
-  bool inProgress;
+
+  bool isDownloading;
+  bool isDownloaded;
+  QString error;
 };
 
 #endif /* _DOWNLOAD_ITEM_ */

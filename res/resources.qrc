@@ -6,5 +6,8 @@
     <file>about-16.png</file>
     <file>preferences-16.png</file>
     <file>quit-16.png</file>
+    <file>complete-16.png</file>
+    <file>error-16.png</file>
+    <file>downloading-16.png</file>
   </qresource>
 </RCC>

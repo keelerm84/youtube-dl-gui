@@ -19,7 +19,7 @@ void DownloadQueue::addTopLevelItem(DownloadItem * item) {
   QTreeWidget::addTopLevelItem(item);
 
   YouTubeTitleRetriever * titleRetriever = new YouTubeTitleRetriever(item->getProperties());
-  connect(titleRetriever, SIGNAL(error(QString, DownloadProperties)), titleRetriever, SLOT(deleteLater()));
+  connect(titleRetriever, SIGNAL(error(QString)), titleRetriever, SLOT(deleteLater()));
   connect(titleRetriever, SIGNAL(success(DownloadProperties)), this, SLOT(setItemTitle(DownloadProperties)));
   connect(titleRetriever, SIGNAL(success(DownloadProperties)), titleRetriever, SLOT(deleteLater()));
   titleRetriever->getTitle();
@@ -31,27 +31,3 @@ void DownloadQueue::setItemTitle(DownloadProperties properties) {
     downloadItem->setProperties(properties);
   }
 }
-
-DownloadItem * DownloadQueue::getItemToDownload() {
-  DownloadItem * download = 0;
-
-  for(int i = 0; i < topLevelItemCount(); ++i) {
-    QTreeWidgetItem * item = topLevelItem(i);
-    DownloadItem * downloadItem = dynamic_cast<DownloadItem *>(item);
-
-    if ( ! downloadItem->isInProgress() ) {
-      return downloadItem;
-    }
-  }
-
-  return download;
-}
-
-
-void DownloadQueue::downloadComplete(DownloadProperties properties) {
-  foreach(QTreeWidgetItem * item, findItems(properties.getTitle(), Qt::MatchExactly, 1)) {
-    DownloadItem * downloadItem = dynamic_cast<DownloadItem *>(item);
-    delete downloadItem;
-  }
-}
-

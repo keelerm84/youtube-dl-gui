@@ -1,6 +1,7 @@
 #include "downloaditem.h"
 
-DownloadItem::DownloadItem(DownloadProperties properties, QTreeWidget * parent) : QTreeWidgetItem(parent), properties(properties), inProgress(false) {
+DownloadItem::DownloadItem(DownloadProperties properties, QTreeWidget * parent) : 
+  QTreeWidgetItem(parent), properties(properties), isDownloading(false), isDownloaded(false), error("") {
   updateDisplay();
 }
 
@@ -34,11 +35,22 @@ void DownloadItem::updateDisplay() {
   setText(4, properties.isAudioDownloadEnabled() ? properties.getAudioFormat() : "n/a");
 }
 
-void DownloadItem::setInProgress(bool isInProgress) {
-  inProgress = isInProgress;
-  updateDisplay();
+bool DownloadItem::isAvailableForDownload() {
+  return ( isDownloading || isDownloaded || 0 < error.length() ) ? false : true;
 }
 
-bool DownloadItem::isInProgress() {
-  return inProgress;
+void DownloadItem::setDownloadComplete() {
+  isDownloaded = true;
+  setIcon(0, QIcon(":/images/complete-16.png"));
+}
+
+void DownloadItem::setDownloadInProgress() {
+  isDownloading = true;
+  setIcon(0, QIcon(":/images/downloading-16.png"));
+}
+
+void DownloadItem::setError(QString _error) {
+  error = _error;
+  setToolTip(0, error);
+  setIcon(0, QIcon(":/images/error-16.png"));
 }

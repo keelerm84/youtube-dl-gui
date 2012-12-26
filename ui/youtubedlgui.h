@@ -2,6 +2,7 @@
 #define _YOUTUBE_DL_GUI_H
 
 #include <QMainWindow>
+#include "../util/downloadmanager.h"
 
 namespace Ui {
   class YouTubeDlGui;
@@ -15,16 +16,17 @@ public:
   YouTubeDlGui(QWidget * parent = 0);
   ~YouTubeDlGui();
 
-protected:
-  void populateUi();
-
 protected slots:
   void showAbout();
   void showPreferences();
   void toggleAdvancedVisiblity();
   void enableAdvancedProperties();
   void addDownload();
-  void downloadFile();
+
+protected:
+  void populateUi();
+
+  DownloadManager * manager;
 
 private:
   Ui::YouTubeDlGui * ui;

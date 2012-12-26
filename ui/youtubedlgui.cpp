@@ -1,7 +1,6 @@
 #include <QMessageBox>
 #include <QUrl>
 #include "../lib/downloadproperties.h"
-#include "../lib/youtubefiledownloader.h"
 #include "../util/settings.h"
 #include "downloaditem.h"
 #include "preferences.h"
@@ -10,14 +9,17 @@
 
 YouTubeDlGui::YouTubeDlGui(QWidget * parent) : QMainWindow(parent), ui(new Ui::YouTubeDlGui) {
   ui->setupUi(this);
+
   connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
   connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
   connect(ui->actionPreferences, SIGNAL(triggered()), this, SLOT(showPreferences()));
 
   connect(ui->btnAdd, SIGNAL(clicked(bool)), this, SLOT(addDownload()));
-  connect(ui->btnDownload, SIGNAL(clicked(bool)), this, SLOT(downloadFile()));
   connect(ui->btnCollapse, SIGNAL(clicked(bool)), this, SLOT(toggleAdvancedVisiblity()));
   connect(ui->cmbDownloadOptions, SIGNAL(currentIndexChanged(QString)), this, SLOT(enableAdvancedProperties()));
+
+  manager = new DownloadManager(ui->tblDownloadQueue, this);
+  connect(ui->btnDownload, SIGNAL(clicked(bool)), manager, SLOT(downloadAll()));
 
   populateUi();
 
@@ -93,15 +95,4 @@ void YouTubeDlGui::addDownload() {
 
   ui->tblDownloadQueue->addTopLevelItem(new DownloadItem(properties));
   ui->txtUrl->setText("");
-}
-
-void YouTubeDlGui::downloadFile() {
-  DownloadItem * item = ui->tblDownloadQueue->getItemToDownload();
-  if ( 0 == item ) return;
-
-  YouTubeFileDownloader * fileDownloader = new YouTubeFileDownloader(item->getProperties());
-  connect(fileDownloader, SIGNAL(error(QString, DownloadProperties)), fileDownloader, SLOT(deleteLater()));
-  connect(fileDownloader, SIGNAL(success(DownloadProperties)), ui->tblDownloadQueue, SLOT(downloadComplete(DownloadProperties)));
-  connect(fileDownloader, SIGNAL(success(DownloadProperties)), fileDownloader, SLOT(deleteLater()));
-  fileDownloader->getFile();
 }

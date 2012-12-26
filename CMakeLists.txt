@@ -18,6 +18,7 @@ LIST(APPEND CMAKE_MODULE_PATH /usr/local/share/apps/cmake/modules)
  ./ui/downloadqueue.cpp
  ./ui/preferences.cpp
  ./ui/youtubedlgui.cpp
+ ./util/downloadmanager.cpp
  ./util/settings.cpp
 )
 
@@ -29,6 +30,7 @@ SET( DESKTOP_APP_MOC_HDRS
   ./ui/downloadqueue.h
   ./ui/preferences.h
   ./ui/youtubedlgui.h
+  ./util/downloadmanager.h
 )
 
 # some .ui files

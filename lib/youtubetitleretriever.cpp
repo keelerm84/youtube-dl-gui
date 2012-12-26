@@ -14,7 +14,7 @@ void YouTubeTitleRetriever::getTitle() {
 
 void YouTubeTitleRetriever::processFinished(int exitCode, QProcess::ExitStatus exitStatus) {
   if ( 0 != exitCode ) {
-    emit error(generateErrorMessage(), properties);
+    emit error(generateErrorMessage());
   } else {
     QString title = process->readAllStandardOutput();
     properties.setTitle(title.replace(QString("\n"), QString("")));

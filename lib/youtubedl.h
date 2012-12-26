@@ -15,7 +15,7 @@ public:
   ~YouTubeDl();
 
 signals:
-  void error(QString error, DownloadProperties properties);
+  void error(QString error);
   void success(DownloadProperties properties);
 
 protected:

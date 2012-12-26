@@ -15,7 +15,7 @@ void YouTubeFileDownloader::getFile() {
 
 void YouTubeFileDownloader::processFinished(int exitCode, QProcess::ExitStatus exitStatus) {
   if ( 0 != exitCode ) {
-    emit error(generateErrorMessage(), properties);
+    emit error(generateErrorMessage());
   } else {
     emit success(properties);
   }
