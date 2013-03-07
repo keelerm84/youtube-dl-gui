@@ -11,18 +11,19 @@ public:
   DownloadItem(DownloadProperties properties, QTreeWidget * parent = 0);
   ~DownloadItem();
 
-  void setProperties(DownloadProperties _properties);
   DownloadProperties getProperties();
+  void setTitle(QString title);
+  void setVideoFormatValue(int format);
 
   void setDownloadInProgress();
   void setDownloadComplete();
   void setError(QString _error);
 
   bool isAvailableForDownload();
+  void updateDisplay();
 
 protected:
   DownloadProperties properties;
-  void updateDisplay();
 
   bool isDownloading;
   bool isDownloaded;

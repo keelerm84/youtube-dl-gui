@@ -28,6 +28,7 @@ protected:
 
   DownloadItem * getNextDownloadItem();
   void downloadFiles();
+  void retrieveFile();
 };
 
 #endif /* _YOUTUBE_DOWNLOAD_MANAGER_H */

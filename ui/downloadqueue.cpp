@@ -20,14 +20,14 @@ void DownloadQueue::addTopLevelItem(DownloadItem * item) {
 
   YouTubeTitleRetriever * titleRetriever = new YouTubeTitleRetriever(item->getProperties());
   connect(titleRetriever, SIGNAL(error(QString)), titleRetriever, SLOT(deleteLater()));
-  connect(titleRetriever, SIGNAL(success(DownloadProperties)), this, SLOT(setItemTitle(DownloadProperties)));
-  connect(titleRetriever, SIGNAL(success(DownloadProperties)), titleRetriever, SLOT(deleteLater()));
+  connect(titleRetriever, SIGNAL(success(QString, QString)), this, SLOT(setItemTitle(QString, QString)));
+  connect(titleRetriever, SIGNAL(success(QString, QString)), titleRetriever, SLOT(deleteLater()));
   titleRetriever->getTitle();
 }
 
-void DownloadQueue::setItemTitle(DownloadProperties properties) {
-  foreach(QTreeWidgetItem * item, findItems(properties.getUrl(), Qt::MatchExactly, 1)) {
+void DownloadQueue::setItemTitle(QString url, QString title) {
+  foreach(QTreeWidgetItem * item, findItems(url, Qt::MatchExactly, 1)) {
     DownloadItem * downloadItem = dynamic_cast<DownloadItem *>(item);
-    downloadItem->setProperties(properties);
+    downloadItem->setTitle(title);
   }
 }

@@ -1,7 +1,7 @@
 #include "downloadproperties.h"
 
 DownloadProperties::DownloadProperties(QString url) :
-    downloadAudio(false), downloadVideo(true), videoFormat("video"), audioFormat("best"), url(url), title("") {
+  downloadAudio(false), downloadVideo(true), videoFormat("video"), videoFormatValue(-1), audioFormat("best"), url(url), title("") {
 }
 
 DownloadProperties::~DownloadProperties() {
@@ -29,6 +29,14 @@ void DownloadProperties::setVideoFormat(QString format) {
 
 QString DownloadProperties::getVideoFormat() {
   return videoFormat;
+}
+
+void DownloadProperties::setVideoFormatValue(int format) {
+  videoFormatValue = format;
+}
+
+int DownloadProperties::getVideoFormatValue() {
+  return videoFormatValue;
 }
 
 void DownloadProperties::setAudioFormat(QString format) {

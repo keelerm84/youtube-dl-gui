@@ -16,7 +16,7 @@ public:
   void addTopLevelItem(DownloadItem * item);
 
 protected slots:
-  void setItemTitle(DownloadProperties properties);
+  void setItemTitle(QString url, QString title);
 };
 
 #endif /* _DOWNLOAD_QUEUE_ */

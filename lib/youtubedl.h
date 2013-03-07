@@ -16,7 +16,6 @@ public:
 
 signals:
   void error(QString error);
-  void success(DownloadProperties properties);
 
 protected:
   QString generateErrorMessage();

@@ -17,6 +17,9 @@ public:
   void setVideoFormat(QString format);
   QString getVideoFormat();
 
+  void setVideoFormatValue(int format);
+  int getVideoFormatValue();
+
   void setAudioFormat(QString format);
   QString getAudioFormat();
 
@@ -30,6 +33,7 @@ protected:
   bool downloadVideo;
 
   QString videoFormat;
+  int videoFormatValue;
   QString audioFormat;
 
   QString url;

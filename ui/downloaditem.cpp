@@ -1,6 +1,6 @@
 #include "downloaditem.h"
 
-DownloadItem::DownloadItem(DownloadProperties properties, QTreeWidget * parent) : 
+DownloadItem::DownloadItem(DownloadProperties properties, QTreeWidget * parent) :
   QTreeWidgetItem(parent), properties(properties), isDownloading(false), isDownloaded(false), error("") {
   updateDisplay();
 }
@@ -8,15 +8,19 @@ DownloadItem::DownloadItem(DownloadProperties properties, QTreeWidget * parent) 
 DownloadItem::~DownloadItem() {
 }
 
-
-void DownloadItem::setProperties(DownloadProperties _properties) {
-  properties = _properties;
-  updateDisplay();
-}
-
 DownloadProperties DownloadItem::getProperties() {
   return properties;
 }
+
+void DownloadItem::setTitle(QString title) {
+  properties.setTitle(title);
+  updateDisplay();
+}
+
+void DownloadItem::setVideoFormatValue(int format) {
+  properties.setVideoFormatValue(format);
+}
+
 
 void DownloadItem::updateDisplay() {
   QString format;

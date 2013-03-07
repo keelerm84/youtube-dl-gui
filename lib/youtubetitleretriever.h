@@ -1,5 +1,5 @@
-#ifndef _YOUTUBE_TITLE_RETREIVER_H
-#define _YOUTUBE_TITLE_RETREIVER_H
+#ifndef _YOUTUBE_TITLE_RETRIEVER_H
+#define _YOUTUBE_TITLE_RETRIEVER_H
 
 #include "youtubedl.h"
 #include "downloadproperties.h"
@@ -14,8 +14,11 @@ public:
 
   void getTitle();
 
+signals:
+  void success(QString url, QString title);
+
 protected slots:
   void processFinished(int exitCode, QProcess::ExitStatus exitStatus);
 };
 
-#endif /* _YOUTUBE_TITLE_RETREIVER_H */
+#endif /* _YOUTUBE_TITLE_RETRIEVER_H */

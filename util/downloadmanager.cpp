@@ -37,13 +37,17 @@ void DownloadManager::downloadFiles() {
   }
 
   download->setDownloadInProgress();
+  retrieveFile();
+}
 
+void DownloadManager::retrieveFile() {
   YouTubeFileDownloader * fileDownloader = new YouTubeFileDownloader(download->getProperties());
   connect(fileDownloader, SIGNAL(error(QString)), this, SLOT(error(QString)));
   connect(fileDownloader, SIGNAL(error(QString)), fileDownloader, SLOT(deleteLater()));
 
   connect(fileDownloader, SIGNAL(success(DownloadProperties)), this, SLOT(downloadSuccessful(DownloadProperties)));
   connect(fileDownloader, SIGNAL(success(DownloadProperties)), fileDownloader, SLOT(deleteLater()));
+
   fileDownloader->getFile();
 }
 

@@ -12,6 +12,7 @@ LIST(APPEND CMAKE_MODULE_PATH /usr/local/share/apps/cmake/modules)
  ./lib/downloadproperties.cpp
  ./lib/youtubedl.cpp
  ./lib/youtubetitleretriever.cpp
+ ./lib/youtubevideoformatretriever.cpp
  ./lib/youtubefiledownloader.cpp
  ./main.cpp
  ./ui/downloaditem.cpp
@@ -26,7 +27,9 @@ LIST(APPEND CMAKE_MODULE_PATH /usr/local/share/apps/cmake/modules)
 SET( DESKTOP_APP_MOC_HDRS
   ./lib/youtubedl.h
   ./lib/youtubetitleretriever.h
+  ./lib/youtubevideoformatretriever.h
   ./lib/youtubefiledownloader.h
+  ./ui/downloaditem.h
   ./ui/downloadqueue.h
   ./ui/preferences.h
   ./ui/youtubedlgui.h
