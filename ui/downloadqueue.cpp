@@ -31,3 +31,53 @@ void DownloadQueue::setItemTitle(QString url, QString title) {
     downloadItem->setTitle(title);
   }
 }
+
+void DownloadQueue::clearFinished() {
+  for(int i = 0; i < topLevelItemCount(); ++i) {
+    DownloadItem * downloadItem = dynamic_cast<DownloadItem *>(topLevelItem(i));
+    if ( downloadItem->isComplete() ) {
+      delete downloadItem;
+    }
+  }
+}
+
+void DownloadQueue::remove() {
+  QTreeWidgetItem * item = currentItem();
+
+  if ( 0 == item ) return;
+
+  DownloadItem * downloadItem = dynamic_cast<DownloadItem *>(item);
+
+  if ( downloadItem->isComplete() || downloadItem->isAvailableForDownload() ) {
+    delete downloadItem;
+  }
+}
+
+void DownloadQueue::promote() {
+  QTreeWidgetItem * item = currentItem();
+
+  if ( 0 == item ) return;
+
+  int row = currentIndex().row();
+
+  if ( 0 == row ) return;
+
+  takeTopLevelItem(row);
+  insertTopLevelItem(row - 1, item);
+  setCurrentItem(item);
+
+}
+
+void DownloadQueue::demote() {
+  QTreeWidgetItem * item = currentItem();
+
+  if ( 0 == item ) return;
+
+  int row = currentIndex().row();
+
+  if ( row == topLevelItemCount() - 1 ) return;
+
+  takeTopLevelItem(row);
+  insertTopLevelItem(row + 1, item);
+  setCurrentItem(item);
+}

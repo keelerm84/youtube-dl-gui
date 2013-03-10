@@ -20,6 +20,7 @@ public:
   void setError(QString _error);
 
   bool isAvailableForDownload();
+  bool isComplete();
   void updateDisplay();
 
 protected:

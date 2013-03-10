@@ -43,6 +43,10 @@ bool DownloadItem::isAvailableForDownload() {
   return ( isDownloading || isDownloaded || 0 < error.length() ) ? false : true;
 }
 
+bool DownloadItem::isComplete() {
+  return isDownloaded;
+}
+
 void DownloadItem::setDownloadComplete() {
   isDownloaded = true;
   setIcon(0, QIcon(":/images/complete-16.png"));

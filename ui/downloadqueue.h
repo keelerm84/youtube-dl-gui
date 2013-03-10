@@ -17,6 +17,10 @@ public:
 
 protected slots:
   void setItemTitle(QString url, QString title);
+  void clearFinished();
+  void remove();
+  void promote();
+  void demote();
 };
 
 #endif /* _DOWNLOAD_QUEUE_ */

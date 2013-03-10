@@ -22,14 +22,14 @@
     <item row="3" column="3">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QPushButton" name="btnUp">
+       <widget class="QPushButton" name="btnPromote">
         <property name="text">
          <string>&amp;Up</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btnDown">
+       <widget class="QPushButton" name="btnDemote">
         <property name="text">
          <string>&amp;Down</string>
         </property>
@@ -59,6 +59,13 @@
        <widget class="QPushButton" name="btnDownload">
         <property name="text">
          <string>Down&amp;load</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnClearFinished">
+        <property name="text">
+         <string>Clear Finished</string>
         </property>
        </widget>
       </item>
@@ -261,7 +268,7 @@
      <x>0</x>
      <y>0</y>
      <width>718</width>
-     <height>29</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -329,8 +336,8 @@
   <tabstop>btnCollapse</tabstop>
   <tabstop>cmbVideoFormat</tabstop>
   <tabstop>cmbAudioFormat</tabstop>
-  <tabstop>btnUp</tabstop>
-  <tabstop>btnDown</tabstop>
+  <tabstop>btnPromote</tabstop>
+  <tabstop>btnDemote</tabstop>
   <tabstop>btnRemove</tabstop>
   <tabstop>btnDownload</tabstop>
   <tabstop>tblDownloadQueue</tabstop>

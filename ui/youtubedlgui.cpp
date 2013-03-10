@@ -16,6 +16,10 @@ YouTubeDlGui::YouTubeDlGui(QWidget * parent) : QMainWindow(parent), ui(new Ui::Y
 
   connect(ui->btnAdd, SIGNAL(clicked(bool)), this, SLOT(addDownload()));
   connect(ui->btnCollapse, SIGNAL(clicked(bool)), this, SLOT(toggleAdvancedVisiblity()));
+  connect(ui->btnClearFinished, SIGNAL(clicked(bool)), ui->tblDownloadQueue, SLOT(clearFinished()));
+  connect(ui->btnRemove, SIGNAL(clicked(bool)), ui->tblDownloadQueue, SLOT(remove()));
+  connect(ui->btnPromote, SIGNAL(clicked(bool)), ui->tblDownloadQueue, SLOT(promote()));
+  connect(ui->btnDemote, SIGNAL(clicked(bool)), ui->tblDownloadQueue, SLOT(demote()));
   connect(ui->cmbDownloadOptions, SIGNAL(currentIndexChanged(QString)), this, SLOT(enableAdvancedProperties()));
 
   manager = new DownloadManager(ui->tblDownloadQueue, this);
