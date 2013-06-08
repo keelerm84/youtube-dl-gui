@@ -67,7 +67,7 @@ void YouTubeDlGui::populateUi() {
 void YouTubeDlGui::toggleAdvancedVisiblity() {
   ui->frameAdvanced->setVisible(! ui->frameAdvanced->isVisible());
 
-  QIcon collapseIcon = ui->frameAdvanced->isVisible() ? QIcon(":/images/collapse.png") : QIcon(":/images/expand-10x6.png");
+  QIcon collapseIcon = ui->frameAdvanced->isVisible() ? QIcon(":/images/collapse.png") : QIcon(":/images/expand.png");
   ui->btnCollapse->setIcon(collapseIcon);
   ui->lblAdvanced->setText(ui->frameAdvanced->isVisible() ? tr("Hide Advanced") : tr("Show Advanced"));
 }
