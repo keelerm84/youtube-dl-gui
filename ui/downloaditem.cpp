@@ -65,17 +65,17 @@ bool DownloadItem::downloading() {
 
 void DownloadItem::setDownloadComplete() {
   isDownloaded = true;
-  setIcon(0, QIcon(":/images/complete-16.png"));
+  setIcon(0, QIcon(":/images/complete.png"));
 }
 
 void DownloadItem::setDownloadInProgress() {
   isDownloading = true;
-  setIcon(0, QIcon(":/images/downloading-16.png"));
+  setIcon(0, QIcon(":/images/downloading.png"));
 }
 
 void DownloadItem::setError(QString _error) {
   error = _error;
   setToolTip(0, error);
-  setIcon(0, QIcon(":/images/error-16.png"));
+  setIcon(0, QIcon(":/images/error.png"));
   isDownloading = false;
 }

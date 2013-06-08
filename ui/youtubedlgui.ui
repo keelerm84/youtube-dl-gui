@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../res/resources.qrc">
-    <normaloff>:/images/youtube-16.png</normaloff>:/images/youtube-16.png</iconset>
+    <normaloff>:/images/youtube.png</normaloff>:/images/youtube-16.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -114,7 +114,7 @@
         </property>
         <property name="icon">
          <iconset resource="../res/resources.qrc">
-          <normaloff>:/images/expand-10x6.png</normaloff>:/images/expand-10x6.png</iconset>
+          <normaloff>:/images/expand.png</normaloff>:/images/expand-10x6.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -297,7 +297,7 @@
   <action name="actionQuit">
    <property name="icon">
     <iconset resource="../res/resources.qrc">
-     <normaloff>:/images/quit-16.png</normaloff>:/images/quit-16.png</iconset>
+     <normaloff>:/images/quit.png</normaloff>:/images/quit-16.png</iconset>
    </property>
    <property name="text">
     <string>Quit</string>
@@ -306,7 +306,7 @@
   <action name="actionPreferences">
    <property name="icon">
     <iconset resource="../res/resources.qrc">
-     <normaloff>:/images/preferences-16.png</normaloff>:/images/preferences-16.png</iconset>
+     <normaloff>:/images/preferences.png</normaloff>:/images/preferences-16.png</iconset>
    </property>
    <property name="text">
     <string>Preferences</string>
@@ -315,7 +315,7 @@
   <action name="actionAbout">
    <property name="icon">
     <iconset resource="../res/resources.qrc">
-     <normaloff>:/images/about-16.png</normaloff>:/images/about-16.png</iconset>
+     <normaloff>:/images/about.png</normaloff>:/images/about-16.png</iconset>
    </property>
    <property name="text">
     <string>About</string>
