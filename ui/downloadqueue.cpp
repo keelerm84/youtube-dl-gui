@@ -37,7 +37,7 @@ void DownloadQueue::setItemTitle(QString url, QString title) {
 }
 
 void DownloadQueue::clearFinished() {
-  for(int i = 0; i < topLevelItemCount(); ++i) {
+  for(int i = topLevelItemCount() - 1; i >= 0; --i) {
     DownloadItem * downloadItem = dynamic_cast<DownloadItem *>(topLevelItem(i));
     if ( downloadItem->isComplete() ) {
       delete downloadItem;

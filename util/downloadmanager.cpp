@@ -5,7 +5,6 @@ DownloadManager::DownloadManager(DownloadQueue * queue, QObject * parent) : QObj
 }
 
 DownloadManager::~DownloadManager() {
-
 }
 
 void DownloadManager::downloadAll() {
