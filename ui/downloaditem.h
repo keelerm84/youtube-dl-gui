@@ -12,6 +12,7 @@ public:
   ~DownloadItem();
 
   DownloadProperties getProperties();
+  void setProperties(DownloadProperties _properties);
   void setTitle(QString title);
   void setVideoFormatValue(int format);
 
@@ -21,6 +22,7 @@ public:
 
   bool isAvailableForDownload();
   bool isComplete();
+  bool downloading();
   void updateDisplay();
 
 protected:

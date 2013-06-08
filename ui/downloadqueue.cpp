@@ -2,6 +2,7 @@
 #include <QHeaderView>
 #include "downloadqueue.h"
 #include "../lib/youtubetitleretriever.h"
+#include "downloaditemdelegate.h"
 
 DownloadQueue::DownloadQueue(QWidget * parent) : QTreeWidget(parent) {
   setHeaderLabels(QStringList() << tr("Status") << tr("Title") << tr("Formats") << tr("Video Format") << tr("Audio Format"));
@@ -10,6 +11,9 @@ DownloadQueue::DownloadQueue(QWidget * parent) : QTreeWidget(parent) {
   header()->setResizeMode(2, QHeaderView::ResizeToContents);
   header()->setResizeMode(3, QHeaderView::ResizeToContents);
   header()->setResizeMode(4, QHeaderView::ResizeToContents);
+
+  DownloadItemDelegate * delegate = new DownloadItemDelegate(this);
+  setItemDelegate(delegate);
 }
 
 DownloadQueue::~DownloadQueue() {

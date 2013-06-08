@@ -1,7 +1,7 @@
 #include "downloadproperties.h"
 
 DownloadProperties::DownloadProperties(QString url) :
-  downloadAudio(false), downloadVideo(true), videoFormat("video"), videoFormatValue(-1), audioFormat("best"), url(url), title("") {
+  downloadAudio(false), downloadVideo(true), videoFormat("mp4"), videoFormatValue(-1), audioFormat("best"), url(url), title("") {
 }
 
 DownloadProperties::~DownloadProperties() {

@@ -50,7 +50,7 @@ QString Settings::getVideoFormat() {
 }
 
 QStringList Settings::supportedAudioFormats() {
-  return QStringList() <<  "aac" << "best" << "m4a" << "mp3" << "vorbis" << "wav";
+  return QStringList() <<  "aac" << "m4a" << "mp3" << "vorbis" << "wav";
 }
 
 QStringList Settings::supportedVideoFormats() {

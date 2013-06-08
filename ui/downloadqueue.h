@@ -5,6 +5,8 @@
 #include "downloaditem.h"
 #include "../lib/downloadproperties.h"
 
+enum DOWNLOAD_QUEUE_COLUMNS { STATUS, TITLE, FORMAT, VIDEO_FORMAT, AUDIO_FORMAT };
+
 class DownloadQueue : public QTreeWidget
 {
   Q_OBJECT

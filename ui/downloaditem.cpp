@@ -3,6 +3,8 @@
 DownloadItem::DownloadItem(DownloadProperties properties, QTreeWidget * parent) :
   QTreeWidgetItem(parent), properties(properties), isDownloading(false), isDownloaded(false), error("") {
   updateDisplay();
+
+  setFlags(flags() | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable);
 }
 
 DownloadItem::~DownloadItem() {
@@ -10,6 +12,16 @@ DownloadItem::~DownloadItem() {
 
 DownloadProperties DownloadItem::getProperties() {
   return properties;
+}
+
+void DownloadItem::setProperties(DownloadProperties _properties) {
+  properties = _properties;
+  error = "";
+
+  // TODO Make use of QPixmapCache
+  QPixmap px(16,16);
+  px.fill(Qt::transparent);
+  setIcon(0, QIcon(px));
 }
 
 void DownloadItem::setTitle(QString title) {
@@ -47,6 +59,10 @@ bool DownloadItem::isComplete() {
   return isDownloaded;
 }
 
+bool DownloadItem::downloading() {
+  return isDownloading;
+}
+
 void DownloadItem::setDownloadComplete() {
   isDownloaded = true;
   setIcon(0, QIcon(":/images/complete-16.png"));
@@ -61,4 +77,5 @@ void DownloadItem::setError(QString _error) {
   error = _error;
   setToolTip(0, error);
   setIcon(0, QIcon(":/images/error-16.png"));
+  isDownloading = false;
 }
