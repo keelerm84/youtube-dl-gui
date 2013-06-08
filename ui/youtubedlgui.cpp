@@ -42,10 +42,15 @@ void YouTubeDlGui::showAbout() {
 void YouTubeDlGui::showPreferences() {
   Preferences preferences(this);
   preferences.exec();
+  populateUi();
 }
 
 void YouTubeDlGui::populateUi() {
   Settings settings;
+
+  ui->cmbDownloadOptions->clear();
+  ui->cmbAudioFormat->clear();
+  ui->cmbVideoFormat->clear();
 
   ui->cmbDownloadOptions->addItems(QStringList() << "Video Only" << "Audio Only" << "Video & Audio");
 
