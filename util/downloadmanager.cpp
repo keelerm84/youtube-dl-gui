@@ -47,7 +47,7 @@ void DownloadManager::retrieveFile() {
   connect(fileDownloader, SIGNAL(success(DownloadProperties)), this, SLOT(downloadSuccessful(DownloadProperties)));
   connect(fileDownloader, SIGNAL(success(DownloadProperties)), fileDownloader, SLOT(deleteLater()));
 
-  fileDownloader->getFile();
+  fileDownloader->retrieveFile();
 }
 
 void DownloadManager::downloadSuccessful(DownloadProperties properties) {
